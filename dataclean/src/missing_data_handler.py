@@ -5,6 +5,40 @@ import numpy as np
 
 
 class MissingDataHandler:
+    """
+    A class to handle missing data in a DataFrame, providing various methods to detect, fill, 
+    and remove missing values, as well as to analyze the impact of missing data on the dataset.
+
+    This class allows for the detection of missing data, identification of patterns of missingness, 
+    filling of missing values using different strategies, and removal of rows or columns based on 
+    the proportion of missing values. Additionally, it offers analysis on the impact of missing data 
+    and provides recommendations for handling it.
+
+    Attributes:
+    -----------
+    data : pd.DataFrame
+        The DataFrame containing the dataset to handle missing values for.
+        
+    Methods:
+    --------
+    detect_missing():
+        Provides a detailed report on missing values by column, including count, percentage, and data type.
+    
+    identify_missing_patterns():
+        Identifies and returns patterns of missing data across rows.
+    
+    fill_missing(strategy="mean", columns=None, value=None):
+        Fills missing values in the specified columns using the specified strategy ('mean', 'median', 'mode', or 'constant').
+    
+    fill_based_on_correlation(target_column):
+        Fills missing values in a specified column using the most correlated feature.
+    
+    remove_missing(axis=0, threshold=0.5):
+        Removes rows or columns that exceed a specified threshold of missing values.
+    
+    summarize_missing_impact():
+        Analyzes the impact of missing data on the dataset and provides recommendations for filling the missing values.
+    """
     def __init__(self, data: pd.DataFrame):
         self.data = data
 
